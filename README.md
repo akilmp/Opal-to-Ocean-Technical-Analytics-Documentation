@@ -39,9 +39,14 @@ export OPAL_OCEAN_SYNTHETIC_SEED=7
 make ingest
 make marts
 make analyze
+
+# Optional: confirm the mart is ready before opening notebooks/dashboard
+PYTHONPATH=src python scripts/check_fact_day.py
 ```
 
 `make ingest` + `make marts` will materialise `data/marts/fact_day.parquet`, rebuild the supporting DuckDB marts, and refresh scenario definitions plus quality reports under `artifacts/`.
+
+The quick health check above verifies that `data/marts/fact_day.parquet` exists, is non-empty, and retains every column defined in `FACT_DAY_COLUMNS`. It’s a fast guardrail to run in CI or before launching notebooks.
 
 Running `make ingest` writes deterministic parquet partitions aligned with the transform schemas under:
 
