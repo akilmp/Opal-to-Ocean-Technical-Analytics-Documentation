@@ -1,4 +1,4 @@
-# Opal to Ocean — Technical & Analytics Documentation
+# Opal to Ocean — Technical & Analytics 
 
 ## 1) Executive summary
 
