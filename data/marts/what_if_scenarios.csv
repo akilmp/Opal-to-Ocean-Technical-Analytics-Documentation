@@ -1,0 +1,6 @@
+scenario,description,delta_weather_temp_c,delta_beach_time_hours,delta_commute_minutes,delta_cultural_events
+Baseline,Observed day averages,0,0,0,0
+Cool Change,Southerly winds bring cooler temps,-3,0.5,5,0
+Heatwave,Hotter afternoon,4,1.0,-3,0
+Festival Frenzy,Summer festival weekend,1,1.5,2,2
+Work Crunch,Long meetings day,-1,-0.5,10,-1

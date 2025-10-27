@@ -15,6 +15,42 @@
 
 ---
 
+## Quickstart with synthetic sample data
+
+The repository now includes a tiny synthetic mart that lets you reproduce the analysis notebooks and Streamlit dashboard without any external APIs.
+
+### 1. Set up a virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 2. Inspect the marts
+
+* `data/marts/sydney_day_samples.csv` — 31 rows (January 2024) with weekday, weather, leisure, commute, and mood fields.
+* `data/marts/what_if_scenarios.csv` — pre-defined adjustments (Δ temperature, beach time, commute, cultural events) for sensitivity analysis.
+
+### 3. Run the notebooks
+
+```bash
+jupyter notebook notebooks/01_build_fact_day.ipynb
+jupyter notebook notebooks/02_eda_results.ipynb
+```
+
+Each notebook demonstrates model training, bootstrap confidence intervals, and scenario-based sensitivity checks using the synthetic mart.
+
+### 4. Launch the dashboard
+
+```bash
+streamlit run app/main.py
+```
+
+Navigate between the **“My Sydney Day”** and **“What-ifs”** pages via the sidebar to explore predictions, confidence intervals, and scenario adjustments powered entirely by the synthetic data.
+
+---
+
 ## 2) Success criteria
 
 * **Data completeness:** ≥ 95% of days in study window have all core features (commute, reliability, Beachwatch flag, PM2.5 daily mean).
