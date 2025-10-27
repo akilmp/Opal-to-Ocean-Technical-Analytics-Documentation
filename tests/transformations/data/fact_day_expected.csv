@@ -1,3 +1,3 @@
-date,weekday,month,commute_minutes,opal_cost,reliability,pm25_mean,rain_24h_mm,beach_status,beach_ok,steps,sleep_hours,mood_1_5,caffeine_mg
-2025-01-01,Wednesday,1,92,15.8,0.75,8.2,0.6,Very good,True,10342,7.5,4,180
-2025-01-02,Thursday,1,88,15.1,1.0,16.4,12.1,Poor,False,8543,6.8,3,220
+date,weekday,month,primary_mode,commute_minutes,opal_cost,cost_per_trip,total_trip_count,late_trip_count,reliability,mean_delay_s,max_delay_s,pm25_mean,pm10_mean,rain_24h_mm,temp_mean_c,after_rain,beach_status,beach_ok,enterococci_mean,beach_site_id,steps,sleep_hours,mood_1_5,caffeine_mg,meeting_count,meeting_minutes
+2025-01-01,Wednesday,1,train,92,15.8,3.95,4,2,0.5,180.0,240.0,8.2,14.5,0.6,23.1,True,Very good,True,12.0,Bondi,10342,7.5,4.0,180,3,150
+2025-01-02,Thursday,1,bus,88,15.1,3.78,4,0,1.0,0.0,0.0,16.4,22.3,12.1,21.7,True,Poor,False,88.0,Manly,8543,6.8,3.0,220,5,240

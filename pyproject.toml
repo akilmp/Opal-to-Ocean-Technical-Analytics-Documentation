@@ -10,6 +10,7 @@ authors = [{ name = "Opal to Ocean" }]
 requires-python = ">=3.10"
 dependencies = [
     "pandas>=2.2",
+    "pyarrow>=16.0",
     "structlog>=24.1",
 ]
 
