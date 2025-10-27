@@ -382,14 +382,9 @@ def run_transforms(run_id: str, run_dir: Path) -> Tuple[Path, Path]:
 
     fact_day = transform_fact_day(stg_commute, stg_env, stg_personal)
 
-    mart_path = _write_dataframe(fact_day, MARTS_DIR / "fact_day.csv")
-    log_event(
-        LOGGER,
-        "fact_day_written",
-        path=str(mart_path),
-        rows=len(fact_day),
-        run_id=run_id,
-    )
+    mart_path = MARTS_DIR / "fact_day.parquet"
+    mart_path.parent.mkdir(parents=True, exist_ok=True)
+    fact_day.to_parquet(mart_path, index=False)
 
     manifest_outputs = [
         {"dataset": name, "rows": int(df.shape[0]), "path": str(path)}

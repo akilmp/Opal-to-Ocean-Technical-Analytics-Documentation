@@ -12,6 +12,7 @@ dependencies = [
     "pandas>=2.2",
     "pyarrow>=16.0",
     "structlog>=24.1",
+    "pyarrow>=14.0",
 ]
 
 [project.optional-dependencies]
