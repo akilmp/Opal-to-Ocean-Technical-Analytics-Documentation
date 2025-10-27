@@ -379,8 +379,6 @@ LEFT JOIN stg_personal_day p USING(date);
 
 ---
 
-If you want, I can also generate a **README scaffold**, `requirements.txt`, `.env.example`, and a tiny **sample dataset** so the repo runs out of the box without your private data.
-
 [1]: https://opendata.transport.nsw.gov.au/dataset/timetables-complete-gtfs?utm_source=chatgpt.com "Timetables Complete GTFS - Transport for NSW"
 [2]: https://developer.transport.nsw.gov.au/developers/documentation?utm_source=chatgpt.com "Documentation | Transport Open Data"
 [3]: https://data.nsw.gov.au/data/dataset/beachwatch?utm_source=chatgpt.com "Beachwatch | Data.NSW - Data.NSW"
