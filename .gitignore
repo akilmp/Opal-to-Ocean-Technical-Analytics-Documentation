@@ -1,2 +1,13 @@
 __pycache__/
 *.pyc
+*.pyo
+*.DS_Store
+.venv/
+.env
+artifacts/*
+!artifacts/.gitkeep
+data/raw/*.csv
+data/staging/*.csv
+data/marts/*.csv
+src/opal_to_ocean.egg-info/
+!.gitignore
