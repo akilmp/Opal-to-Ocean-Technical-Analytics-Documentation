@@ -58,6 +58,10 @@ DATASET_SCHEMAS: Mapping[str, List[str]] = {
     ],
 }
 
+RAW_DATASET_PATHS: Mapping[str, Path] = {
+    dataset: RAW_DIR / dataset for dataset in DATASET_ORDER
+}
+
 
 @dataclass
 class PartitionResult:
@@ -132,6 +136,10 @@ def _ensure_schema(dataset: str, frame: pd.DataFrame) -> pd.DataFrame:
     return frame[required_columns].copy()
 
 
+def _resolve_dataset_directory(name: str) -> Path:
+    return RAW_DATASET_PATHS.get(name, RAW_DIR / name)
+
+
 def _create_dataset_result(
     name: str,
     frame: pd.DataFrame,
@@ -141,11 +149,13 @@ def _create_dataset_result(
     ordered = _ensure_schema(name, frame)
     dataset_metadata = dict(metadata)
     dataset_metadata["record_count"] = int(len(ordered))
+    dataset_dir = _resolve_dataset_directory(name)
+    dataset_dir.mkdir(parents=True, exist_ok=True)
     destination = persist_dataframe(
         ordered,
-        source=name,
+        source=dataset_dir.name,
         ingest_date=ingest_date,
-        base_dir=RAW_DIR,
+        base_dir=dataset_dir.parent,
     )
     partition = PartitionResult(path=destination, rows=len(ordered), metadata=dataset_metadata)
     return DatasetResult(name=name, partitions=[partition], metadata=dataset_metadata)

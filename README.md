@@ -29,13 +29,19 @@ pip install -r requirements.txt
 
 ### 2. Build the synthetic marts
 
+The ingestion CLI defaults to synthetic mode, but the environment overrides below make the behaviour explicit and reproducible across machines:
+
 ```bash
+export OPAL_OCEAN_INGEST_MODE=synthetic
+export OPAL_OCEAN_SYNTHETIC_DAYS=35
+export OPAL_OCEAN_SYNTHETIC_SEED=7
+
 make ingest
 make marts
 make analyze
 ```
 
-The three commands will materialise `data/marts/fact_day.parquet`, rebuild the supporting DuckDB marts, and refresh scenario definitions plus quality reports under `artifacts/`.
+`make ingest` + `make marts` will materialise `data/marts/fact_day.parquet`, rebuild the supporting DuckDB marts, and refresh scenario definitions plus quality reports under `artifacts/`.
 
 Running `make ingest` writes deterministic parquet partitions aligned with the transform schemas under:
 
