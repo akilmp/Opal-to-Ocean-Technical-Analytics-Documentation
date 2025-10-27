@@ -1,0 +1,3 @@
+date,total_trip_count,late_trip_count,commute_minutes,opal_cost
+2025-01-01,4,1,92,15.8
+2025-01-02,4,0,88,15.1
