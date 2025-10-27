@@ -193,9 +193,9 @@ def test_run_transforms_builds_expected_fact_day(tmp_path) -> None:
 
     manifest_path, quality_path = run_transforms(run_id=run_id, run_dir=run_dir)
 
-    fact_day_path = MARTS_DIR / "fact_day.csv"
+    fact_day_path = MARTS_DIR / "fact_day.parquet"
     assert fact_day_path.exists()
-    actual_fact = pd.read_csv(fact_day_path)
+    actual_fact = pd.read_parquet(fact_day_path)
     expected_fact = pd.read_csv("tests/transformations/data/fact_day_expected.csv")
     pd.testing.assert_frame_equal(actual_fact, expected_fact, check_dtype=False)
 

@@ -37,6 +37,16 @@ make analyze
 
 The three commands will materialise `data/marts/fact_day.parquet`, rebuild the supporting DuckDB marts, and refresh scenario definitions plus quality reports under `artifacts/`.
 
+Running `make ingest` writes deterministic parquet partitions aligned with the transform schemas under:
+
+* `data/raw/commute_trips/ingest_date=YYYY-MM-DD/…`
+* `data/raw/air_quality/ingest_date=YYYY-MM-DD/…`
+* `data/raw/weather/ingest_date=YYYY-MM-DD/…`
+* `data/raw/beachwatch/ingest_date=YYYY-MM-DD/…`
+* `data/raw/personal/ingest_date=YYYY-MM-DD/…`
+
+The CLI defaults to `OPAL_OCEAN_INGEST_MODE=synthetic`, ensuring every machine can reproduce the flow without credentials. Set `OPAL_OCEAN_INGEST_MODE=live` to replace the Beachwatch and Air Quality feeds with real API pulls (synthetic generators still backfill commute, weather, and personal metrics). Live mode requires `NSW_DATA_API_KEY`, `AIR_QUALITY_DATASET_ID`, and `BEACHWATCH_DATASET_ID` to be exported. You can also tweak the synthetic window with `OPAL_OCEAN_SYNTHETIC_DAYS` (default 35 days) and `OPAL_OCEAN_SYNTHETIC_SEED` (default 7) for deterministic variations.
+
 ### 3. Inspect the marts
 
 * `data/marts/fact_day.parquet` — synthetic fact table with commute, reliability, environmental, activity, and mood signals.
