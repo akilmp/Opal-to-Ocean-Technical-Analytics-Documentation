@@ -1,0 +1,3 @@
+# Ignore generated mart outputs but keep directory structure
+marts/
+raw/
