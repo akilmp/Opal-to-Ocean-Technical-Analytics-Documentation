@@ -30,11 +30,11 @@ FACT_DAY_REQUIRED_COLUMNS = [
 
 
 def run_quality_checks(run_id: str, run_dir: Path) -> Tuple[Path, Path]:
-    fact_path = MARTS_DIR / "fact_day.csv"
+    fact_path = MARTS_DIR / "fact_day.parquet"
     if not fact_path.exists():
-        raise FileNotFoundError("fact_day.csv not found. Run `make marts` first.")
+        raise FileNotFoundError("fact_day.parquet not found. Run `make marts` first.")
 
-    frame = pd.read_csv(fact_path)
+    frame = pd.read_parquet(fact_path)
 
     checks = [
         check_required_columns(frame, FACT_DAY_REQUIRED_COLUMNS),
