@@ -27,12 +27,22 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Inspect the marts
+### 2. Build the synthetic marts
 
-* `data/marts/sydney_day_samples.csv` — 31 rows (January 2024) with weekday, weather, leisure, commute, and mood fields.
-* `data/marts/what_if_scenarios.csv` — pre-defined adjustments (Δ temperature, beach time, commute, cultural events) for sensitivity analysis.
+```bash
+make ingest
+make marts
+make analyze
+```
 
-### 3. Run the notebooks
+The three commands will materialise `data/marts/fact_day.parquet`, rebuild the supporting DuckDB marts, and refresh scenario definitions plus quality reports under `artifacts/`.
+
+### 3. Inspect the marts
+
+* `data/marts/fact_day.parquet` — synthetic fact table with commute, reliability, environmental, activity, and mood signals.
+* `data/marts/what_if_scenarios.csv` — adjustment templates (Δ commute minutes, reliability, PM2.5, rain, steps, sleep, caffeine) used by notebooks and the dashboard.
+
+### 4. Run the notebooks
 
 ```bash
 jupyter notebook notebooks/01_build_fact_day.ipynb
@@ -41,7 +51,7 @@ jupyter notebook notebooks/02_eda_results.ipynb
 
 Each notebook demonstrates model training, bootstrap confidence intervals, and scenario-based sensitivity checks using the synthetic mart.
 
-### 4. Launch the dashboard
+### 5. Launch the dashboard
 
 ```bash
 streamlit run app/main.py

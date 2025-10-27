@@ -59,9 +59,9 @@ def run_transforms(run_id: str, run_dir: Path) -> Tuple[Path, Path]:
 
     fact_day = transform_fact_day(commute, environment, personal)
 
-    mart_path = MARTS_DIR / "fact_day.csv"
+    mart_path = MARTS_DIR / "fact_day.parquet"
     mart_path.parent.mkdir(parents=True, exist_ok=True)
-    fact_day.to_csv(mart_path, index=False)
+    fact_day.to_parquet(mart_path, index=False)
 
     log_event(LOGGER, "fact_day_written", path=str(mart_path), rows=len(fact_day))
 

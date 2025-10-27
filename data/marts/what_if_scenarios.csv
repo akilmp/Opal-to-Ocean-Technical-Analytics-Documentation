@@ -1,6 +1,6 @@
-scenario,description,delta_weather_temp_c,delta_beach_time_hours,delta_commute_minutes,delta_cultural_events
-Baseline,Observed day averages,0,0,0,0
-Cool Change,Southerly winds bring cooler temps,-3,0.5,5,0
-Heatwave,Hotter afternoon,4,1.0,-3,0
-Festival Frenzy,Summer festival weekend,1,1.5,2,2
-Work Crunch,Long meetings day,-1,-0.5,10,-1
+scenario,description,delta_commute_minutes,delta_reliability,delta_pm25_mean,delta_rain_24h_mm,delta_steps,delta_sleep_hours,delta_caffeine_mg
+Baseline,Observed day averages,0,0,0,0,0,0,0
+Rainy Commute,Heavy rain slows travel and dampens mood,15,-0.15,8,20,-400,-0.3,80
+Clear Skies,Sunny day with better air and shorter commute,-12,0.1,-6,-10,600,0.2,0
+Big Presentation,Stressful workday with extra caffeine,8,-0.05,0,0,-800,-0.8,150
+Restful Weekend,Recharge with rest and outdoor time,-5,0.05,-2,-5,1200,0.7,-60
